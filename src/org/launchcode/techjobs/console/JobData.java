@@ -125,4 +125,18 @@ public class JobData {
         }
     }
 
+    public static ArrayList<HashMap<String, String>> findByValue(String searchTerm) {
+        ArrayList<HashMap<String, String>> foundJobs = new ArrayList<HashMap<String, String>>();
+        loadData();
+
+        for(int i = 0; i < allJobs.size(); i++) {
+            for(String key : allJobs.get(i).keySet()) {
+                if (allJobs.get(i).get(key).toLowerCase().contains(searchTerm.toLowerCase())) {
+                    foundJobs.add(allJobs.get(i));
+                    break;
+                }
+            }
+        }
+        return foundJobs;
+    }
 }
